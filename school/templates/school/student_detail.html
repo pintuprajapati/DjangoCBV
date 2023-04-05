@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Name: {{student.name}} <br>
+    Email: {{student.email}} <br>
+    Pass: {{student.password}} <br>
+    <br>
+    <form action="{% url 'student-delete' object.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <br>
+    <form action="{% url 'student-update' object.pk %}" method="post">
+        {% csrf_token %}    
+        <a href="{% url 'student-update' object.pk %}">Update</a>
+        <a href="{% url 'create-student' %}">Cancel</a>
+    </form>
+</body>
+</html>
